@@ -25,6 +25,12 @@ spring:
             - Path=/license/**
           filters:
             - RewritePath=/license/(?<path>.*), /$\{path}
+        - id: authorization-manager
+          uri: lb://authorization-manager
+          predicates:
+            - Path=/auth/**
+          filters:
+            - RewritePath=/auth/(?<path>.*), /$\{path}
       
 management:
   endpoints:
